@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: var(--color-brand-dark);
+  --color-brand-main: var(--color-brand-main);
+  --color-brand-accent: var(--color-brand-accent);
+  --color-brand-accent-hover: var(--color-brand-accent-hover);
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-light-hover: var(--color-brand-light-hover);
+  --color-brand-bg: var(--color-brand-bg);
+
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --color-brand-dark: #012b25;
+  --color-brand-main: #003c2d;
+  --color-brand-accent: #50b848;
+  --color-brand-accent-hover: #45a03d;
+  --color-brand-light: #3ca638;
+  --color-brand-light-hover: #328e2f;
+  --color-brand-bg: #fdfdfd;
+
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
