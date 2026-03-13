@@ -11,6 +11,8 @@ import {
 
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
+import { WhatsappButton } from "@/components/WhatsappButton";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -200,54 +202,9 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full bg-brand-dark px-6 py-8 text-xs text-brand-dark md:px-12 border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 md:flex-row">
-
-          <div className="flex flex-col gap-4 text-white/70">
-            <div className="text-2xl font-bold italic tracking-tight text-brand-accent mb-2">
-              crenorte
-            </div>
-            <p className="uppercase tracking-wide">
-              INSTITUTO CULTURAL, SOCIAL E EDUCACIONAL DA AMAZÔNIA - ICSEIA
-            </p>
-            <p>CNPJ: 00.000.000/0001-00</p>
-            <p>E-MAIL: CONTATO@CRENORTE.COM.BR</p>
-            <div className="flex flex-col gap-2 pt-2">
-              <a href="#" className="hover:text-white transition-colors">POLÍTICA DE PRIVACIDADE</a>
-              <a href="#" className="hover:text-white transition-colors">TERMOS DE USO</a>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-end gap-8 pt-6 md:pt-0">
-            {/* Logos */}
-            <div className="flex items-center font-bold text-white text-xl tracking-tighter">
-              <span className="text-4xl pr-1 italic text-white/90">/</span>
-              <span className="font-extrabold flex flex-col leading-none text-base text-white/90">
-                <span className="text-xs font-normal tracking-widest text-brand-accent">basa</span>
-                acredita
-              </span>
-            </div>
-
-            <div className="flex items-center font-bold text-white text-xl tracking-tighter">
-              <span className="text-4xl pr-1 italic text-white/90">/</span>
-              <span className="font-extrabold flex flex-col leading-none text-base text-white/90">
-                <span className="text-xs font-normal tracking-widest">Banco da</span>
-                Amazônia
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
       {/* FLOATING WHATSAPP BUTTON (AS REQUESTED) */}
-      <a
-        href="#"
-        className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-brand-light text-white shadow-2xl transition-transform hover:scale-110 active:scale-95 group"
-        aria-label="Entre em contato via WhatsApp"
-      >
-        <div className="absolute inset-0 rounded-full bg-brand-light animate-ping opacity-20"></div>
-        <MessageCircle className="h-8 w-8 fill-white relative z-10" />
-      </a>
+      <WhatsappButton />
     </div>
   );
 }
