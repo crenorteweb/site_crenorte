@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 @theme {
+  --font-banco-amazonia: var(--font-banco-amazonia), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-banco-amazonia-texto: var(--font-banco-amazonia-texto), ui-sans-serif, system-ui, sans-serif;
+  
   --color-brand-dark: #012b25;
-  --color-brand-main: #003c2d;
-  --color-brand-accent: #50b848;
+  --color-brand-main: #003C2D;
+  --color-brand-accent: #00E12D;
   --color-brand-accent-hover: #45a03d;
-  --color-brand-light: #3ca638;
+  --color-brand-light: #00E12D;
   --color-brand-light-hover: #328e2f;
   --color-brand-bg: #fdfdfd;
 
-  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-banco-amazonia);
 }
