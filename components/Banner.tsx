@@ -14,7 +14,7 @@ const slides = [
   },
   {
     image: "/prancheta-1.png",
-    imageMobile: "/prancheta-8.png",
+    imageMobile: "/prancheta-5.png",
     title: "MELHOR MICROCRÉDITO DA AMAZÔNIA",
   },
   {
