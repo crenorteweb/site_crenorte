@@ -1,11 +1,33 @@
+'use client'
+
 import { FaWhatsapp } from "react-icons/fa";
 import { TitleBanc } from "./textBanc/TitleBanc";
+import { WHATSAPP_NUMBER } from "../lib/constants";
+
+const PIXEL_ID = "1450709972666497";
+
+function trackWhatsappClick() {
+  try {
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Contact');
+    } else {
+      // Fallback via sendBeacon quando fbq está bloqueado (ad blockers, etc.)
+      navigator.sendBeacon(
+        `https://www.facebook.com/tr?id=${PIXEL_ID}&ev=Contact&noscript=1`
+      );
+    }
+  } catch {
+    // tracking nunca deve quebrar a navegação
+  }
+}
 
 export function WhatsappButton() {
     return (
         <a
-        href="https://wa.me/559191834527"
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
+        rel="noopener noreferrer"
+        onClick={trackWhatsappClick}
         className="fixed bottom-6 right-6 z-50 flex items-center transition-transform hover:scale-110 active:scale-95"
         aria-label="Entre em contato via WhatsApp"
         >

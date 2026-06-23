@@ -6,6 +6,8 @@ import { FormSection } from "@/components/FormSection";
 import { ConditionsSection } from "@/components/ConditionsSection";
 import { InstagramSection } from "@/components/InstagramSection";
 import { Questions } from "@/components/Questions";
+import { RecrutamentoCTA } from "@/components/RecrutamentoCTA";
+import { NovasUnidades } from "@/components/NovasUnidades";
 
 export default function Home() {
   return (
@@ -25,8 +27,14 @@ export default function Home() {
       {/* INSTAGRAM SECTION */}
       <InstagramSection />
 
+      {/* NOVAS UNIDADES SECTION */}
+      <NovasUnidades />
+
       {/* QUESTIONS SECTION */}
       <Questions />
+
+      {/* RECRUITMENT CTA SECTION */}
+      <RecrutamentoCTA />
 
       {/* FOOTER */}
       <Footer />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { TextBanc } from "./textBanc/TextBanc";
 import { TitleBanc } from "./textBanc/TitleBanc";
+import { WHATSAPP_NUMBER } from "../lib/constants";
 
 function onlyDigits(s: string) {
     return String(s || "").replace(/\D+/g, "");
@@ -80,16 +81,16 @@ export function Form() {
     const [enviado, setEnviado] = useState(false);
     const [erroEnvio, setErroEnvio] = useState(false);
 
-    const ESTADOS_NORTE = ["AC", "AM", "AP", "PA", "RO", "RR", "TO"];
+    const ESTADOS_ATENDIDOS = ["AC", "AM", "AP", "MA", "MT", "PA", "RO", "RR", "TO"];
 
     useEffect(() => {
         fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados?fields=id,sigla")
             .then((res) => res.json())
             .then((data: Estado[]) => {
-                const norte = data
-                    .filter((e) => ESTADOS_NORTE.includes(e.sigla))
+                const filtrados = data
+                    .filter((e) => ESTADOS_ATENDIDOS.includes(e.sigla))
                     .sort((a, b) => a.sigla.localeCompare(b.sigla));
-                setEstados(norte);
+                setEstados(filtrados);
             })
             .catch(() => {});
     }, []);
@@ -193,7 +194,7 @@ export function Form() {
             setEnviado(true);
             setTimeout(() => {
                 window.open(
-                    `https://wa.me/559191834527?text=${encodeURIComponent("Olá! Acabei de realizar meu pré-cadastro no site e gostaria de mais informações sobre o crédito.")}`,
+                    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Acabei de realizar meu pré-cadastro no site e gostaria de mais informações sobre o crédito.")}`,
                     "_blank"
                 );
             }, 2000);
