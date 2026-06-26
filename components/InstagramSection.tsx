@@ -1,6 +1,11 @@
 'use client'
+import dynamic from 'next/dynamic';
 import { TitleBanc } from "./textBanc/TitleBanc";
-import { InstagramEmbed } from 'react-social-media-embed';
+
+const InstagramEmbed = dynamic(
+  () => import('react-social-media-embed').then(mod => mod.InstagramEmbed),
+  { ssr: false }
+);
 
 export function InstagramSection() {
     return (

@@ -17,11 +17,11 @@ const slides = [
     imageMobile: "/prancheta-5.png",
     title: "MELHOR MICROCRÉDITO DA AMAZÔNIA",
   },
-  {
-    image: "/prancheta-3.png",
-    imageMobile: "/prancheta-6.png",
-    title: "NÃO CAIA EM GOLPES!",
-  },
+  // {
+  //   image: "/prancheta-3.png",
+  //   imageMobile: "/prancheta-6.png",
+  //   title: "NÃO CAIA EM GOLPES!",
+  // },
 ];
 
 export default function Banner() {

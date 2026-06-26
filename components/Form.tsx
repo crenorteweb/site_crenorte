@@ -153,6 +153,16 @@ export function Form() {
         if (!formValido) return;
         setEnviando(true);
         setErroEnvio(false);
+
+        // Pixel dispara aqui, no momento em que o usuário completa o formulário
+        // válido — não pode depender do sucesso da API de leads (terceiro),
+        // senão uma falha/lentidão no backend zera o CompleteRegistration.
+        try {
+            if (typeof (window as any).fbq === 'function') {
+                (window as any).fbq('track', 'CompleteRegistration', { value: 1.00, currency: 'BRL' });
+            }
+        } catch {}
+
         try {
             // Método primário: API na Vercel → Firebase (coleção pre_cadastros)
             const apiPromise = fetch("https://crenorte-leads-api-v5hu.vercel.app/api/leads", {
