@@ -70,6 +70,7 @@ export function Form() {
     const [phoneTouched, setPhoneTouched] = useState(false);
     const [municipio, setMunicipio] = useState("");
     const [bairro, setBairro] = useState("");
+    const [endereco, setEndereco] = useState("");
     const [estado, setEstado] = useState("");
     const [cadunico, setCadunico] = useState<string | null>(null);
     const [autorizo, setAutorizo] = useState(false);
@@ -145,6 +146,7 @@ export function Form() {
         phoneValid &&
         municipio.trim().length > 0 &&
         bairro.trim().length > 0 &&
+        endereco.trim().length > 0 &&
         estado !== "" &&
         cadunico !== null &&
         autorizo;
@@ -173,6 +175,7 @@ export function Form() {
                     cpf: onlyDigits(cpf),
                     telefone: onlyDigits(phone),
                     bairro: bairro.trim(),
+                    endereco: endereco.trim(),
                     municipio: municipio.trim(),
                     uf: estado,
                     modalidade: cadunico === "Sim" ? "cadunico" : "grupo_solidario",
@@ -187,6 +190,7 @@ export function Form() {
                 telefone: phone,
                 municipio: municipio.trim(),
                 bairro: bairro.trim(),
+                endereco: endereco.trim(),
                 uf: estado,
                 cadunico: cadunico!,
             });
@@ -307,6 +311,14 @@ export function Form() {
                         className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 focus:ring-brand-accent"
                     />
                 </div>
+
+                <input
+                    type="text"
+                    placeholder="ENDEREÇO DO COMÉRCIO"
+                    value={endereco}
+                    onChange={(e) => setEndereco(e.target.value)}
+                    className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                />
 
                 <div className="flex flex-row gap-3 items-center ml-2">
                     <TextBanc as="label" className="block mb-2 text-sm font-bold text-white uppercase tracking-wide">

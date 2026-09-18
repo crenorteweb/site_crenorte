@@ -9,7 +9,7 @@ export function FormSection() {
           {/* Left Text & Image */}
           <div className="w-full md:w-1/2">
             <Image 
-              src={"/prancheta-8.png"}
+              src={"/site-banner.png"}
               alt="Form Image"
               className="rounded-3xl"
               width={600}

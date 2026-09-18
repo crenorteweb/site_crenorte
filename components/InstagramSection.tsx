@@ -20,21 +20,21 @@ export function InstagramSection() {
             {/* Phone Mockup 1 */}
             <div className="relative rounded-[2.5rem] border-8 border-gray-900 bg-gray-50 overflow-hidden shadow-2xl shrink-0">
               <InstagramEmbed
-                  url="https://www.instagram.com/reel/DQpIyLOEe3L/?igsh=eDlhMDNsMW81ZDF5"
+                  url="https://www.instagram.com/reel/DbDjEUPoUtV/?igsh=MTF0bHh0ZGx2eTdkMQ=="
                   width={326}
               />
             </div>
 
             <div className="relative rounded-[2.5rem] border-8 border-gray-900 bg-gray-50 overflow-hidden shadow-2xl shrink-0">
               <InstagramEmbed
-                url="https://www.instagram.com/reel/DRUd3-JksDo/?igsh=aXYxZDQ3bGUxNzMy"
+                url="https://www.instagram.com/reel/DbvIgT8hNTT/?igsh=aW4zbXRqeTU4NmJv"
                 width={326}
               />
             </div>
 
             <div className="relative rounded-[2.5rem] border-8 border-gray-900 bg-gray-50 overflow-hidden shadow-2xl shrink-0">
               <InstagramEmbed
-                url="https://www.instagram.com/reel/DQZbvx6jp84/?igsh=MTl4NHp6Nm42MDBnZw=="
+                url="https://www.instagram.com/reel/DXHfTNDDW-A/?igsh=MWJrYjZmYTloMGl6MA=="
                 width={326}
               />
             </div>

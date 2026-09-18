@@ -22,8 +22,8 @@ export function RecrutamentoCTA() {
         </TitleBanc>
 
         <TextBanc className="mb-8 text-sm md:text-base text-gray-300 max-w-xl leading-relaxed">
-          Faça parte de uma equipe que transforma vidas através do microcrédito. 
-          Temos vagas abertas para **Assessor(a) de Microfinanças** nos estados do Pará, Maranhão, Tocantins, Roraima e Rondônia.
+          Temos vagas abertas para Assessor(a) de Microfinanças nos estados do Pará, Maranhão, Tocantins, Roraima e Rondônia.
+Confira as oportunidades disponíveis e candidate-se.
         </TextBanc>
 
         <Link
