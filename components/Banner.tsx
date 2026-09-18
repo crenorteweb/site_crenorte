@@ -5,7 +5,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { TitleBanc } from "./textBanc/TitleBanc";
 
 const slides = [
   {
@@ -74,17 +73,8 @@ export default function Banner() {
                       priority={index === 0}
                     />
 
-                    {/* Overlay em gradiente para dar profundidade e legibilidade ao título */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-brand-dark/10 to-transparent" />
-
-                    <div className="absolute inset-x-0 bottom-0 px-6 pb-20 sm:px-10 sm:pb-16 md:px-16 md:pb-20">
-                      <TitleBanc
-                        as="h2"
-                        className="max-w-2xl text-2xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-lg sm:text-3xl md:text-4xl"
-                      >
-                        {slide.title}
-                      </TitleBanc>
-                    </div>
+                    {/* Overlay sutil em gradiente para dar profundidade à imagem */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent" />
                   </div>
 
                 </div>
