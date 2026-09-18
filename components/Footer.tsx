@@ -49,7 +49,7 @@ export function Footer() {
                     </div>
 
                     {/* Parceiros */}
-                    <div className="flex flex-row items-center justify-center gap-6 md:flex-col md:items-end">
+                    <div className="flex flex-col items-center justify-center gap-6 md:items-end">
                         <Image src="/basa_acredita.png" alt="basa acredita" width={200} height={90} />
                         <Image src="/banco_da_amazonia.png" alt="banco da amazonia" width={150} height={80} />
                     </div>
