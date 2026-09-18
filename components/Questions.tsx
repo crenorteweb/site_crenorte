@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { TitleBanc } from "./textBanc/TitleBanc";
+import { TextBanc } from "./textBanc/TextBanc";
+import { Reveal } from "./ui/Reveal";
+import { SectionBadge } from "./ui/SectionBadge";
 
 const faqs = [
     {
@@ -31,39 +35,61 @@ const faqs = [
 ];
 
 export function Questions() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const toggle = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
-        <section className="px-4 py-8 md:py-10 pb-16 w-full flex flex-col items-center">
-            <TitleBanc as="h2" className="mb-8 text-xl md:text-3xl font-black uppercase tracking-tight text-center">
-                Perguntas Frequentes
-            </TitleBanc>
-            <div className="w-full max-w-3xl flex flex-col gap-4">
-                {faqs.map((faq, index) => (
-                    <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
-                        <button
-                            className="w-full text-left px-6 py-4 flex justify-between items-center gap-4 bg-white hover:bg-gray-50 transition-colors"
-                            onClick={() => toggle(index)}
-                            aria-expanded={openIndex === index}
-                        >
-                            <span className="font-semibold text-sm md:text-base text-gray-800">
-                                {faq.question}
-                            </span>
-                            <span className="text-xl text-gray-500 shrink-0">
-                                {openIndex === index ? "−" : "+"}
-                            </span>
-                        </button>
-                        {openIndex === index && (
-                            <div className="px-6 py-4 text-sm md:text-base text-gray-600 bg-gray-50 border-t border-gray-200">
-                                {faq.answer}
+        <section className="px-4 py-16 md:py-20 pb-16 w-full flex flex-col items-center bg-brand-bg">
+            <Reveal className="mb-10 flex flex-col items-center gap-3">
+                <SectionBadge icon={HelpCircle} label="Tire suas dúvidas" variant="light" />
+                <TitleBanc as="h2" className="text-xl md:text-3xl font-black uppercase tracking-tight text-center text-brand-dark">
+                    Perguntas Frequentes
+                </TitleBanc>
+            </Reveal>
+            <div className="w-full max-w-3xl flex flex-col gap-3">
+                {faqs.map((faq, index) => {
+                    const isOpen = openIndex === index;
+                    return (
+                        <Reveal key={faq.question} delay={Math.min(index, 4) * 60}>
+                            <div
+                                className={`rounded-2xl border bg-white overflow-hidden transition-shadow duration-300 ${
+                                    isOpen ? "border-brand-accent/40 shadow-lg shadow-brand-accent/10" : "border-gray-200 hover:border-gray-300"
+                                }`}
+                            >
+                                <button
+                                    className="w-full text-left px-5 md:px-6 py-4 flex justify-between items-center gap-4 cursor-pointer"
+                                    onClick={() => toggle(index)}
+                                    aria-expanded={isOpen}
+                                >
+                                    <span className="font-semibold text-sm md:text-base text-brand-dark">
+                                        {faq.question}
+                                    </span>
+                                    <span
+                                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                                            isOpen ? "rotate-180 bg-brand-accent text-brand-dark" : "bg-gray-100 text-gray-500"
+                                        }`}
+                                    >
+                                        <ChevronDown className="h-4 w-4" />
+                                    </span>
+                                </button>
+                                <div
+                                    className={`grid transition-all duration-300 ease-in-out ${
+                                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                    }`}
+                                >
+                                    <div className="overflow-hidden">
+                                        <TextBanc className="px-5 md:px-6 pb-5 text-sm md:text-base text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                                            {faq.answer}
+                                        </TextBanc>
+                                    </div>
+                                </div>
                             </div>
-                        )}
-                    </div>
-                ))}
+                        </Reveal>
+                    );
+                })}
             </div>
         </section>
     );

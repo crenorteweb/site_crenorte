@@ -4,18 +4,18 @@ import Link from "next/link";
 import { TitleBanc } from "./textBanc/TitleBanc";
 import { TextBanc } from "./textBanc/TextBanc";
 import { ArrowRight, Briefcase } from "lucide-react";
+import { Reveal } from "./ui/Reveal";
+import { SectionBadge } from "./ui/SectionBadge";
 
 export function RecrutamentoCTA() {
   return (
-    <section className="w-full bg-brand-main border-t border-b border-white/10 px-4 py-16 text-center relative overflow-hidden">
+    <section className="w-full bg-brand-main border-t border-b border-white/10 px-4 py-16 md:py-20 text-center relative overflow-hidden">
       {/* Background Decorative Blur */}
       <div className="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-brand-accent/10 blur-3xl pointer-events-none" />
       <div className="absolute -right-20 -bottom-20 w-72 h-72 rounded-full bg-brand-accent/10 blur-3xl pointer-events-none" />
 
-      <div className="mx-auto max-w-3xl flex flex-col items-center relative z-10">
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-accent/25 text-brand-accent">
-          <Briefcase className="h-6 w-6" />
-        </div>
+      <Reveal className="mx-auto max-w-3xl flex flex-col items-center relative z-10">
+        <SectionBadge icon={Briefcase} label="Vagas abertas" className="mb-4" />
 
         <TitleBanc as="h2" className="mb-4 text-2xl md:text-3xl font-black uppercase tracking-tight text-white">
           Estamos Contratando!
@@ -33,7 +33,7 @@ Confira as oportunidades disponíveis e candidate-se.
           Trabalhe Conosco
           <ArrowRight className="h-4 w-4" />
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }

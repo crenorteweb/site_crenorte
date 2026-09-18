@@ -2,17 +2,19 @@ import Image from "next/image"
 
 export default function Header() {
     return (
-        <header className="flex h-20 w-full items-center justify-between bg-brand-main px-6 md:px-24">
-            <div className="flex items-center">
+        <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-brand-main/90 backdrop-blur-md">
+            <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-12">
                 {/* Logo placeholder - basa acredita */}
-                <div className="flex items-center">
-                    <Image src="/banco_da_amazonia.png" alt="Basa Acredita" width={150} height={80}></Image>
+                <div className="flex items-center transition-transform duration-300 hover:scale-105">
+                    <Image src="/banco_da_amazonia.png" alt="Basa Acredita" width={150} height={80} />
+                </div>
+                {/* Logo placeholder - crenorte */}
+                <div className="flex items-center transition-transform duration-300 hover:scale-105">
+                    <Image src="/crenorte.png" alt="crenorte" width={180} height={100} />
                 </div>
             </div>
-            {/* Logo placeholder - crenorte */}
-            <div className="flex items-center">
-                <Image src="/crenorte.png" alt="crenorte" width={180} height={100}></Image>
-            </div>
+            {/* Linha de destaque sutil no rodapé do header */}
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-accent/40 to-transparent" />
         </header>
     )
 }

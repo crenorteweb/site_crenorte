@@ -32,11 +32,11 @@ export function WhatsappButton() {
         aria-label="Entre em contato via WhatsApp"
         >
         <div className="absolute inset-0 rounded-full bg-brand-light opacity-10 animate-ping"></div>
-        <TitleBanc as="h2" className="flex items-center rounded-l-full bg-brand-light px-5 pr-8 py-2 text-md font-bold tracking-widerext-white whitespace-nowrap -mr-6 z-0">
+        <TitleBanc as="h2" className="flex items-center rounded-l-full bg-brand-light px-5 pr-8 py-2 text-md font-bold tracking-wider text-white whitespace-nowrap -mr-6 z-0 shadow-lg">
           ENTRE EM CONTATO
         </TitleBanc>
 
-        <div className="relative flex items-center justify-center rounded-full bg-brand-light h-18 w-18 shrink-0 z-10">
+        <div className="relative flex items-center justify-center rounded-full bg-brand-light h-18 w-18 shrink-0 z-10 shadow-lg shadow-black/30">
           <FaWhatsapp className="h-12 w-12 text-white relative z-10" size={32} />
         </div>
       </a>

@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { FormSection } from "@/components/FormSection";
 import { ConditionsSection } from "@/components/ConditionsSection";
 import { InstagramSection } from "@/components/InstagramSection";
+import { PodcastSection } from "@/components/PodcastSection";
 import { Questions } from "@/components/Questions";
 import { RecrutamentoCTA } from "@/components/RecrutamentoCTA";
 import { NovasUnidades } from "@/components/NovasUnidades";
@@ -24,11 +25,14 @@ export default function Home() {
       {/* CONDITIONS SECTION */}
       <ConditionsSection />
 
+      {/* NOVAS UNIDADES SECTION */}
+      <NovasUnidades />
+
       {/* INSTAGRAM SECTION */}
       <InstagramSection />
 
-      {/* NOVAS UNIDADES SECTION */}
-      <NovasUnidades />
+      {/* PODCAST SECTION */}
+      <PodcastSection />
 
       {/* QUESTIONS SECTION */}
       <Questions />

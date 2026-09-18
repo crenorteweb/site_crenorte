@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Building2, Check, ChevronDown, CreditCard, Home, Landmark, MapPin, Phone, ShieldCheck, User } from "lucide-react";
 import { TextBanc } from "./textBanc/TextBanc";
 import { TitleBanc } from "./textBanc/TitleBanc";
 import { WHATSAPP_NUMBER } from "../lib/constants";
@@ -219,162 +220,204 @@ export function Form() {
         }
     };
 
+    const inputBaseClass =
+        "font-banco-amazonia-texto w-full rounded-full bg-white pl-11 pr-5 py-3.5 text-sm font-semibold text-brand-dark placeholder:font-medium placeholder:text-brand-dark/40 transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-accent";
+    const selectBaseClass =
+        "font-banco-amazonia-texto w-full appearance-none cursor-pointer rounded-full bg-white pl-11 pr-9 py-3.5 text-sm font-semibold text-brand-dark transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-accent disabled:cursor-not-allowed disabled:opacity-50";
+
     return (
-        <div className="w-full md:w-1/2">
-            <div className="rounded-3xl border border-white/20 p-6 md:p-8 backdrop-blur-sm">
-              <TitleBanc as="h2" className="text-center text-2xl font-bold uppercase tracking-wider text-white">
-                SOLICITE SEU CRÉDITO AGORA
-              </TitleBanc>
-              <TextBanc className="mb-6 text-center text-sm font-slim text-gray-400">
-                *Sujeito a análise de crédito.
-              </TextBanc>
-              <form className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  placeholder="NOME COMPLETO"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                  className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 focus:ring-brand-accent"
-                />
-                <div className="flex flex-col md:flex-row gap-3 items-center justify-center">
-                    <div className="w-full flex flex-col">
-                        <input
-                            type="text"
-                            placeholder="CPF"
-                            value={cpf}
-                            onChange={handleCpfChange}
-                            onBlur={() => setCpfTouched(true)}
-                            inputMode="numeric"
-                            className={`font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 ${showCpfError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-brand-accent"}`}
-                        />
-                        {showCpfError && (
-                            <span className="text-center text-xs text-red-400 font-semibold">
-                                CPF inválido
-                            </span>
-                        )}
-                    </div>
-                    <div className="w-full flex flex-col">
-                        <input
-                            type="text"
-                            placeholder="TELEFONE"
-                            value={phone}
-                            onChange={handlePhoneChange}
-                            onBlur={() => setPhoneTouched(true)}
-                            inputMode="numeric"
-                            className={`font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 ${showPhoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-brand-accent"}`}
-                        />
-                        {showPhoneError && (
-                            <span className="text-center text-xs text-red-400 font-semibold">
-                                Telefone inválido
-                            </span>
-                        )}
-                    </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-3 ">
-                    <select
-                        value={estado}
-                        onChange={(e) => setEstado(e.target.value)}
-                        className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-accent appearance-none cursor-pointer"
-                    >
-                        <option value="" disabled className="text-brand-dark/50">ESTADO</option>
-                        {estados.map((estado) => (
-                            <option key={estado.id} value={estado.sigla}>
-                                {estado.sigla}
-                            </option>
-                        ))}
-                    </select>
-                    <select
-                        value={municipio}
-                        onChange={(e) => {
-                            const selected = municipios.find((m) => m.nome === e.target.value);
-                            setMunicipio(e.target.value);
-                            setMunicipioId(selected?.id ?? null);
-                        }}
-                        disabled={!estado || loadingMunicipios}
-                        className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-accent appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        <option value="" disabled>
-                            {loadingMunicipios ? "CARREGANDO..." : !estado ? "SELECIONE O ESTADO" : "MUNICÍPIO"}
-                        </option>
-                        {municipios.map((m) => (
-                            <option key={m.id} value={m.nome} data-id={m.id}>
-                                {m.nome}
-                            </option>
-                        ))}
-                    </select>
+        <div className="w-full">
+            <div className="relative rounded-[2rem] bg-gradient-to-br from-white/15 via-white/5 to-transparent p-px shadow-2xl shadow-black/30">
+              <div className="rounded-[calc(2rem-1px)] bg-brand-dark/60 p-6 backdrop-blur-xl md:p-8">
+                <TitleBanc as="h2" className="text-center text-2xl font-bold uppercase tracking-wider text-white">
+                  SOLICITE SEU CRÉDITO AGORA
+                </TitleBanc>
+                <TextBanc className="mb-6 text-center text-sm font-slim text-gray-400">
+                  *Sujeito a análise de crédito.
+                </TextBanc>
+                <form className="flex flex-col gap-3">
+                  <div className="relative">
+                    <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
                     <input
-                        type="text"
-                        placeholder="BAIRRO"
-                        value={bairro}
-                        onChange={(e) => setBairro(e.target.value)}
-                        className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                      type="text"
+                      placeholder="Nome completo"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      className={inputBaseClass}
                     />
-                </div>
+                  </div>
 
-                <input
-                    type="text"
-                    placeholder="ENDEREÇO DO COMÉRCIO"
-                    value={endereco}
-                    onChange={(e) => setEndereco(e.target.value)}
-                    className="font-banco-amazonia-texto w-full rounded-full bg-white px-5 py-3 text-center text-xs font-bold text-brand-dark placeholder:text-brand-dark/50 focus:outline-none focus:ring-2 focus:ring-brand-accent"
-                />
+                  <div className="flex flex-col md:flex-row gap-3 items-start justify-center">
+                      <div className="w-full flex flex-col gap-1">
+                          <div className="relative">
+                              <CreditCard className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                              <input
+                                  type="text"
+                                  placeholder="CPF"
+                                  value={cpf}
+                                  onChange={handleCpfChange}
+                                  onBlur={() => setCpfTouched(true)}
+                                  inputMode="numeric"
+                                  className={`${inputBaseClass} ${showCpfError ? "ring-2 ring-red-500 focus:ring-red-500" : ""}`}
+                              />
+                          </div>
+                          {showCpfError && (
+                              <span className="pl-4 text-xs text-red-400 font-semibold">
+                                  CPF inválido
+                              </span>
+                          )}
+                      </div>
+                      <div className="w-full flex flex-col gap-1">
+                          <div className="relative">
+                              <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                              <input
+                                  type="text"
+                                  placeholder="Telefone"
+                                  value={phone}
+                                  onChange={handlePhoneChange}
+                                  onBlur={() => setPhoneTouched(true)}
+                                  inputMode="numeric"
+                                  className={`${inputBaseClass} ${showPhoneError ? "ring-2 ring-red-500 focus:ring-red-500" : ""}`}
+                              />
+                          </div>
+                          {showPhoneError && (
+                              <span className="pl-4 text-xs text-red-400 font-semibold">
+                                  Telefone inválido
+                              </span>
+                          )}
+                      </div>
+                  </div>
 
-                <div className="flex flex-row gap-3 items-center ml-2">
-                    <TextBanc as="label" className="block mb-2 text-sm font-bold text-white uppercase tracking-wide">
-                        Possui CadÚnico ativo?
-                    </TextBanc>
-                    <div className="flex flex-row gap-3">
-                        <div className="flex items-center justify-center gap-1 mb-2">
-                            <input type="radio" name="cadunico" value="Sim" onChange={() => setCadunico("Sim")} />
-                            <TextBanc as="label" className="text-white font-bold tracking-wide uppercase">Sim</TextBanc>
-                        </div>
-                        <div className="flex items-center justify-center gap-1 mb-2">
-                            <input type="radio" name="cadunico" value="Não" onChange={() => setCadunico("Não")} />
-                            <TextBanc as="label" className="text-white font-bold tracking-wide uppercase">Não</TextBanc>
-                        </div>
-                    </div>
-                </div>
+                  <div className="flex flex-col md:flex-row gap-3">
+                      <div className="relative w-full">
+                          <MapPin className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                          <select
+                              value={estado}
+                              onChange={(e) => setEstado(e.target.value)}
+                              className={selectBaseClass}
+                          >
+                              <option value="" disabled className="text-brand-dark/50">Estado</option>
+                              {estados.map((estado) => (
+                                  <option key={estado.id} value={estado.sigla}>
+                                      {estado.sigla}
+                                  </option>
+                              ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                      </div>
+                      <div className="relative w-full">
+                          <Landmark className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                          <select
+                              value={municipio}
+                              onChange={(e) => {
+                                  const selected = municipios.find((m) => m.nome === e.target.value);
+                                  setMunicipio(e.target.value);
+                                  setMunicipioId(selected?.id ?? null);
+                              }}
+                              disabled={!estado || loadingMunicipios}
+                              className={selectBaseClass}
+                          >
+                              <option value="" disabled>
+                                  {loadingMunicipios ? "Carregando..." : !estado ? "Selecione o estado" : "Município"}
+                              </option>
+                              {municipios.map((m) => (
+                                  <option key={m.id} value={m.nome} data-id={m.id}>
+                                      {m.nome}
+                                  </option>
+                              ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                      </div>
+                      <div className="relative w-full">
+                          <Home className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                          <input
+                              type="text"
+                              placeholder="Bairro"
+                              value={bairro}
+                              onChange={(e) => setBairro(e.target.value)}
+                              className={inputBaseClass}
+                          />
+                      </div>
+                  </div>
 
-                <label className="flex items-start gap-3 cursor-pointer mt-1">
-                    <input
-                        type="checkbox"
-                        checked={autorizo}
-                        onChange={(e) => setAutorizo(e.target.checked)}
-                        className="mt-0.5 h-4 w-4 shrink-0 accent-brand-accent cursor-pointer"
-                    />
-                    <TextBanc as="span" className="text-xs text-gray-300 leading-relaxed">
-                        Autorizo a consulta de informações em meu nome (CPF/CNPJ) nos sistemas de crédito (SCR, CADIN e
-                        SERASA) para fins de análise cadastral e de crédito, em conformidade com a LGPD.
-                    </TextBanc>
-                </label>
+                  <div className="relative">
+                      <Building2 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-dark/40" />
+                      <input
+                          type="text"
+                          placeholder="Endereço do comércio"
+                          value={endereco}
+                          onChange={(e) => setEndereco(e.target.value)}
+                          className={inputBaseClass}
+                      />
+                  </div>
 
-                {enviado ? (
-                    <p className="mt-2 text-center text-sm font-bold text-green-400 uppercase tracking-wide">
-                        Cadastro realizado com sucesso! Você será direcionado para o WhatsApp da nossa equipe.
-                    </p>
-                ) : (
-                    <>
-                        {erroEnvio && (
-                            <p className="text-center text-xs text-red-400 font-semibold">
-                                Erro ao enviar. Tente novamente.
-                            </p>
-                        )}
-                        <button
-                          type="button"
-                          disabled={!formValido || enviando}
-                          onClick={handleSubmit}
-                          className={`font-banco-amazonia-texto mt-2 w-full rounded-full px-5 py-3.5 text-center text-sm font-black uppercase tracking-wider text-brand-dark transition-transform focus:outline-none focus:ring-2 focus:ring-brand-accent ${
-                            formValido && !enviando
-                              ? "bg-brand-accent hover:scale-[1.02] hover:bg-brand-accent-hover cursor-pointer"
-                              : "bg-brand-accent/40 cursor-not-allowed"
-                          }`}
-                        >
-                          {enviando ? "ENVIANDO..." : "SOLICITAR AGORA"}
-                        </button>
-                    </>
-                )}
-              </form>
+                  <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center rounded-2xl bg-white/5 border border-white/10 px-4 py-3">
+                      <TextBanc as="label" className="text-sm font-bold text-white uppercase tracking-wide">
+                          Possui CadÚnico ativo?
+                      </TextBanc>
+                      <div className="flex flex-row gap-2">
+                          {(["Sim", "Não"] as const).map((opcao) => (
+                              <button
+                                  key={opcao}
+                                  type="button"
+                                  onClick={() => setCadunico(opcao)}
+                                  aria-pressed={cadunico === opcao}
+                                  className={`rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wide transition-colors duration-200 ${
+                                      cadunico === opcao
+                                          ? "bg-brand-accent text-brand-dark"
+                                          : "bg-white/10 text-white hover:bg-white/20"
+                                  }`}
+                              >
+                                  {opcao}
+                              </button>
+                          ))}
+                      </div>
+                  </div>
+
+                  <label className="flex items-start gap-3 cursor-pointer rounded-2xl bg-white/5 border border-white/10 px-4 py-3 mt-1">
+                      <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                      <div className="flex items-start gap-3">
+                          <input
+                              type="checkbox"
+                              checked={autorizo}
+                              onChange={(e) => setAutorizo(e.target.checked)}
+                              className="mt-0.5 h-4 w-4 shrink-0 accent-brand-accent cursor-pointer"
+                          />
+                          <TextBanc as="span" className="text-xs text-gray-300 leading-relaxed">
+                              Autorizo a consulta de informações em meu nome (CPF/CNPJ) nos sistemas de crédito (SCR, CADIN e
+                              SERASA) para fins de análise cadastral e de crédito, em conformidade com a LGPD.
+                          </TextBanc>
+                      </div>
+                  </label>
+
+                  {enviado ? (
+                      <p className="mt-2 flex items-center justify-center gap-2 text-center text-sm font-bold text-green-400 uppercase tracking-wide">
+                          <Check className="h-4 w-4 shrink-0" />
+                          Cadastro realizado com sucesso! Você será direcionado para o WhatsApp da nossa equipe.
+                      </p>
+                  ) : (
+                      <>
+                          {erroEnvio && (
+                              <p className="text-center text-xs text-red-400 font-semibold">
+                                  Erro ao enviar. Tente novamente.
+                              </p>
+                          )}
+                          <button
+                            type="button"
+                            disabled={!formValido || enviando}
+                            onClick={handleSubmit}
+                            className={`font-banco-amazonia-texto mt-2 w-full rounded-full px-5 py-3.5 text-center text-sm font-black uppercase tracking-wider text-brand-dark transition-all focus:outline-none focus:ring-2 focus:ring-brand-accent ${
+                              formValido && !enviando
+                                ? "bg-brand-accent hover:scale-[1.02] hover:bg-brand-accent-hover cursor-pointer shadow-[0_0_20px_rgba(0,225,45,0.25)] hover:shadow-[0_0_28px_rgba(0,225,45,0.4)]"
+                                : "bg-brand-accent/40 cursor-not-allowed"
+                            }`}
+                          >
+                            {enviando ? "ENVIANDO..." : "SOLICITAR AGORA"}
+                          </button>
+                      </>
+                  )}
+                </form>
+              </div>
             </div>
         </div>
     )

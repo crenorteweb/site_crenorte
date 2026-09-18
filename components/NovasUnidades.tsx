@@ -8,6 +8,8 @@ import { BrazilStatesMap } from "./units/BrazilStatesMap"
 import { UnitCard } from "./units/UnitCard"
 import { brazilStatePaths } from "./units/brazilStatesPaths"
 import { unitsByState } from "./units/unitsData"
+import { Reveal } from "./ui/Reveal"
+import { SectionBadge } from "./ui/SectionBadge"
 
 // Estados exibidos: Região Norte inteira + Maranhão e Mato Grosso
 const VISIBLE_STATE_IDS = ["ac", "am", "ap", "pa", "ro", "rr", "to", "ma", "mt"]
@@ -39,21 +41,18 @@ export function NovasUnidades() {
 
             <div className="mx-auto max-w-6xl relative z-10">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 rounded-full bg-brand-accent/15 border border-brand-accent/30 px-4 py-1.5 mb-4">
-                        <MapPin className="h-4 w-4 text-brand-accent" />
-                        <span className="text-brand-accent text-xs font-semibold uppercase tracking-widest">Expansão Nacional</span>
-                    </div>
-                    <TitleBanc as="h2" className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-3">
+                <Reveal className="text-center mb-12 flex flex-col items-center gap-3">
+                    <SectionBadge icon={MapPin} label="Expansão Nacional" />
+                    <TitleBanc as="h2" className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-1">
                         Microcrédito Mais Perto de Você
                     </TitleBanc>
                     <TextBanc className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
                         Selecione um estado no mapa e encontre a unidade Crenorte mais próxima de você.
                     </TextBanc>
-                </div>
+                </Reveal>
 
                 {/* Mapa interativo + lista de estados */}
-                <div className="flex flex-col lg:flex-row items-stretch gap-6 mb-10">
+                <Reveal delay={100} className="flex flex-col lg:flex-row items-stretch gap-6 mb-10">
                     {/* Mapa */}
                     <div className="w-full lg:w-3/5 flex flex-col rounded-2xl bg-white/5 border border-white/10 p-6">
                         <BrazilStatesMap
@@ -102,29 +101,31 @@ export function NovasUnidades() {
                             })}
                         </ul>
                     </div>
-                </div>
+                </Reveal>
 
                 {/* Cards das unidades do estado selecionado */}
                 <div>
-                    <div className="flex items-center gap-2 mb-5">
+                    <Reveal className="flex items-center gap-2 mb-5">
                         <Building2 className="h-5 w-5 text-brand-accent" />
                         <TitleBanc as="h3" className="text-white text-xl md:text-2xl font-bold uppercase tracking-wide">
                             Unidades em {selectedStateData?.name ?? ""}
                         </TitleBanc>
-                    </div>
+                    </Reveal>
 
                     {units.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                             {units.map((unit, index) => (
-                                <UnitCard key={`${selectedState}-${index}`} unit={unit} />
+                                <Reveal key={`${selectedState}-${index}`} delay={index * 80}>
+                                    <UnitCard unit={unit} />
+                                </Reveal>
                             ))}
                         </div>
                     ) : (
-                        <div className="rounded-2xl border border-dashed border-white/10 bg-white/5 px-6 py-10 text-center">
+                        <Reveal className="rounded-2xl border border-dashed border-white/10 bg-white/5 px-6 py-10 text-center">
                             <TextBanc className="text-gray-400 text-sm md:text-base max-w-md mx-auto">
                                 Estamos atualizando as unidades deste estado. Fale com a gente pelo WhatsApp para saber mais.
                             </TextBanc>
-                        </div>
+                        </Reveal>
                     )}
                 </div>
             </div>
